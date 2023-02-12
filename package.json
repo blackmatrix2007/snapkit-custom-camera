@@ -1,8 +1,7 @@
 {
   "name": "snapkit-custom-camera",
-  "title": "Snapkit Custom Camera",
-  "version": "1.0.1",
-  "description": "TODO",
+  "version": "0.1.0",
+  "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -14,60 +13,77 @@
     "android",
     "ios",
     "cpp",
-    "snapkit-custom-camera.podspec",
+    "*.podspec",
     "!lib/typescript/example",
-    "!android/build",
     "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__"
+    "!**/__mocks__",
+    "!**/.*"
   ],
-
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typescript": "tsc --noEmit",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/blackmatrix2007/snapkit-custom-camera.git",
-    "baseUrl": "https://github.com/blackmatrix2007/snapkit-custom-camera"
+    "bootstrap": "yarn example && yarn install && yarn example pods",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "ios",
+    "android"
   ],
-  "author": {
-    "name": "sondhoang",
-    "email": "sondh@gmail.com"
-  },
+  "repository": "https://github.com/blackmatrix2007/snapkit-custom-camera.git",
+  "author": "DuongHoangSon <sondhoang@gmail.com> (https://github.com/blackmatrix2007/snapkit-custom-camera.git)",
   "license": "MIT",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/blackmatrix2007/snapkit-custom-camera.git/issues"
+  },
+  "homepage": "https://github.com/blackmatrix2007/snapkit-custom-camera.git#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
-    
-    "@types/jest": "^26.0.0",
-    "@types/lodash": "4.14.141",
-    "@types/react": "16.9.5",
-    "@types/react-native": "0.64.13",
-    
-    
-    "husky": "^6.0.0",
-    "jest": "^26.0.1",
+    "@evilmartians/lefthook": "^1.2.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@react-native-community/eslint-config": "^3.0.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "0.70.0",
+    "commitlint": "^17.0.2",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "17.0.1",
-    "react-native": "0.64.2",
-    "react-native-builder-bob": "^0.18.0",
-    "release-it": "^14.2.2",
-    "typescript": "4.5.4"
+    "react": "18.2.0",
+    "react-native": "0.71.2",
+    "react-native-builder-bob": "^0.20.0",
+    "release-it": "^15.0.0",
+    "typescript": "^4.5.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.21"
   },
   "peerDependencies": {
-      "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react": "*",
+    "react-native": "*"
   },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "packageManager": "^yarn@1.22.15",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
@@ -140,12 +156,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "axios": "^0.26.1",
-    "lodash": "^4.17.21",
-    "react-native-fs": "2.16.4",
-    "react-native-reanimated": "2.2.0",
-    "react-native-svg": "12.1.0"
   }
 }

@@ -1,17 +1,31 @@
 # snapkit-custom-camera
 
-## Getting started
+support snapkit on react native
 
-`$ npm install snapkit-custom-camera --save`
+## Installation
 
-### Mostly automatic installation
-
-`$ react-native link snapkit-custom-camera`
+```sh
+npm install snapkit-custom-camera
+```
 
 ## Usage
-```javascript
-import SnapkitCustomCamera from 'snapkit-custom-camera';
 
-// TODO: What to do with the module?
-SnapkitCustomCamera;
+```js
+import { SnapkitCustomCameraView } from "snapkit-custom-camera";
+
+// ...
+
+<SnapkitCustomCameraView color="tomato" />
 ```
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+## License
+
+MIT
+
+---
+
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

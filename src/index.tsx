@@ -1,23 +1,26 @@
-// main index.js
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  ViewStyle,
+} from 'react-native';
 
-// import { requireNativeComponent } from 'react-native';
+const LINKING_ERROR =
+  `The package 'snapkit-custom-camera' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n' +
+  '- You are not using Expo Go\n';
 
-// const SnapkitCustomCamera = requireNativeComponent('SnapkitCustomCamera', null);
-
-// export default SnapkitCustomCamera;
-
-
-
-
-import { requireNativeComponent, View } from 'react-native';
-
-const settings:any = {
-    name: 'SnapkitCustomCamera',
-    propTypes: {
-         ...View.propTypes,
-    },
+type SnapkitCustomCameraProps = {
+  color: string;
+  style: ViewStyle;
 };
 
+const ComponentName = 'SnapkitCustomCameraView';
 
-
-export default requireNativeComponent('SnapkitCustomCamera', settings);
+export const SnapkitCustomCameraView =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent<SnapkitCustomCameraProps>(ComponentName)
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
